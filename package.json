@@ -1,6 +1,6 @@
 {
   "name": "atomicagent-notifier",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Notifier for atomicagent",
   "bin": {
     "atomicagent-notifier-slack": "./bin/atomicagent-notifier-slack"
