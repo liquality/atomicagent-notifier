@@ -40,7 +40,12 @@ module.exports = (url, logDir, explorer) => {
 
   const fromAmount = assets[order.from].unitToCurrency(order.fromAmount).toNumber()
   const toAmount = assets[order.to].unitToCurrency(order.toAmount).toNumber()
-  const markdown = Object.entries(order).map(([key, value]) => `${key}: ${value}`).join('\n')
+  const markdown = Object.entries(order).map(([key, value]) => {
+    if (key === 'txMap') {
+      value = JSON.stringify(value, null, 2)
+    }
+    return `${key}: ${value}`
+  }).join('\n')
 
   return post(url, {
     text: `\`${order.status}\` \`${order.orderId}\` \`${fromAmount} ${order.from} to ${toAmount} ${order.to}\``,
